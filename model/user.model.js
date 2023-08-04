@@ -9,7 +9,7 @@ const userSchema = new Schema(
          required: true,
          unique: true,
          trim: true,
-         match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+         match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/, // match = regex
       },
 
       profilePicture: {

@@ -1,8 +1,9 @@
-import cors from "cors";
-import * as dotenv from "dotenv";
+import cors from "cors"; // Cross Origin Resource Sharing - Quem vai poder fazer requisições para o meu servidor
+import * as dotenv from "dotenv"; // esconder e acessar nossas variáveis de ambiente
 import express from "express";
 import connectToDB from "./config/db.config.js";
-import userRouter from "./routes/user.routes copy.js";
+import userRouter from "./routes/user.routes.js";
+import uploadRoute from "./routes/upload.routes.js";
 
 dotenv.config();
 
@@ -10,10 +11,13 @@ connectToDB();
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // cors() => Aceita a requisição de TODO MUNDO
+app.use(express.json()); // configuração do servidor para aceitar e receber arquivos em json
 
 app.use("/user", userRouter);
+
+// ex: localhost:4000/upload/file
+app.use("/upload", uploadRoute);
 
 app.listen(process.env.PORT, () => {
    console.log(`Server up and running at port ${process.env.PORT}`);
