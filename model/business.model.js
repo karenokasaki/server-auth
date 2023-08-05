@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema(
+const businessSchema = new Schema(
    {
       name: { type: String, required: true, trim: true },
 
@@ -12,12 +12,12 @@ const userSchema = new Schema(
          match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/, // match = regex
       },
 
-      profilePicture: {
+      logo: {
          type: String,
          default: "https://cdn.wallpapersafari.com/92/63/wUq2AY.jpg",
       },
 
-      role: { type: String, enum: ["ADMIN", "USER"], default: "USER" },
+      role: { type: String, enum: ["ADMIN", "BUSINESS"], default: "BUSINESS" },
 
       telefone: { type: String, required: true, trim: true },
 
@@ -25,12 +25,12 @@ const userSchema = new Schema(
 
       active: { type: Boolean, default: true },
 
-      curriculo: { type: String },
+      description: { type: String },
 
-      history_jobs: [{ type: Schema.Types.ObjectId, ref: "Job" }], 
+      offers: [{ type: Schema.Types.ObjectId, ref: "Job" }],
    },
    // o que mais eu posso colocar nas opcoes do schema?
    { timestamps: true }
 );
 
-export default model("User", userSchema);
+export default model("Business", businessSchema);
