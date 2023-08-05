@@ -2,7 +2,11 @@ import { Schema, model } from "mongoose";
 
 const jobSchema = new Schema(
    {
-      business: { type: Schema.Types.ObjectId, ref: "Business", required: true },
+      business: {
+         type: Schema.Types.ObjectId,
+         ref: "Business",
+         required: true,
+      },
       description: { type: String, required: true },
       salary: { type: Number, required: true },
       candidates: [{ type: Schema.Types.ObjectId, ref: "User" }],
