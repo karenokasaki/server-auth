@@ -13,6 +13,8 @@ userRouter.post("/signup", async (req, res) => {
    try {
       const form = req.body;
 
+      console.log(form)
+
       if (!form.email || !form.password) {
          throw new Error("Por favor, envie um email e uma senha");
       }
