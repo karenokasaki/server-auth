@@ -12,7 +12,7 @@ const businessSchema = new Schema(
          match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/, // match = regex
       },
 
-      logo: {
+      profilePicture: {
          type: String,
          default: "https://cdn.wallpapersafari.com/92/63/wUq2AY.jpg",
       },
