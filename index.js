@@ -2,8 +2,10 @@ import cors from "cors"; // Cross Origin Resource Sharing - Quem vai poder fazer
 import * as dotenv from "dotenv"; // esconder e acessar nossas variáveis de ambiente
 import express from "express";
 import connectToDB from "./config/db.config.js";
+
 import userRouter from "./routes/user.routes.js";
 import uploadRoute from "./routes/upload.routes.js";
+import businessRoute from "./routes/business.routes.js";
 
 dotenv.config();
 
@@ -16,7 +18,11 @@ app.use(express.json()); // configuração do servidor para aceitar e receber ar
 
 app.use("/user", userRouter);
 
-// ex: localhost:4000/upload/file
+// criar rota do business
+app.use("/business", businessRoute);
+
+// criar rota do job
+
 app.use("/upload", uploadRoute);
 
 app.listen(process.env.PORT, () => {
