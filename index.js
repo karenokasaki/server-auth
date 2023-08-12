@@ -6,6 +6,7 @@ import connectToDB from "./config/db.config.js";
 import userRouter from "./routes/user.routes.js";
 import uploadRoute from "./routes/upload.routes.js";
 import businessRoute from "./routes/business.routes.js";
+import jobRouter from "./routes/job.routes.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use("/user", userRouter);
 app.use("/business", businessRoute);
 
 // criar rota do job
+app.use("/job", jobRouter);
 
 app.use("/upload", uploadRoute);
 
