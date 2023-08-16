@@ -13,7 +13,7 @@ userRouter.post("/signup", async (req, res) => {
    try {
       const form = req.body;
 
-      console.log(form)
+      console.log(form);
 
       if (!form.email || !form.password) {
          throw new Error("Por favor, envie um email e uma senha");
@@ -106,11 +106,9 @@ userRouter.put("/edit", isAuth, async (req, res) => {
 
       return res.status(200).json(updatedUser);
    } catch (error) {
-      console.log(err);
-      return res.status(500).json(err);
+      console.log(error);
+      return res.status(500).json(error);
    }
 });
-
-
 
 export default userRouter;
