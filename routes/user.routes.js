@@ -85,7 +85,9 @@ userRouter.get("/profile", isAuth, async (req, res) => {
    try {
       const id_user = req.auth._id;
 
-      const user = await UserModel.findById(id_user).select("-passwordHash");
+      const user = await UserModel.findById(id_user)
+         .select("-passwordHash")
+         .populate("history_jobs");
 
       return res.status(200).json(user);
    } catch (err) {

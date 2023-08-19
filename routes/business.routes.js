@@ -63,7 +63,7 @@ businessRoute.post("/login", async (req, res) => {
          business.passwordHash = undefined;
 
          return res.status(200).json({
-            business: business,
+            user: business,
             token: token,
          });
       } else {
@@ -84,9 +84,9 @@ businessRoute.get("/profile", isAuth, async (req, res) => {
    try {
       const id_business = req.auth._id;
 
-      const business = await BusinessModel.findById(id_business).select(
-         "-passwordHash"
-      );
+      const business = await BusinessModel.findById(id_business)
+         .select("-passwordHash")
+         .populate("offers");
 
       return res.status(200).json(business);
    } catch (error) {
