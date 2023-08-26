@@ -29,7 +29,7 @@ jobRouter.post("/create", isAuth, async (req, res) => {
    }
 });
 
-//get ONE JOB
+//get ONE JOB /job/:id_job
 jobRouter.get("/:id_job", isAuth, async (req, res) => {
    try {
       const id_job = req.params.id_job;
@@ -41,7 +41,7 @@ jobRouter.get("/:id_job", isAuth, async (req, res) => {
          })
          .populate({
             path: "candidates",
-            select: "name email telefone description",
+            select: "name email telefone curriculo",
          })
          .populate({
             path: "select_candidate",
@@ -57,6 +57,17 @@ jobRouter.get("/:id_job", isAuth, async (req, res) => {
 
 //get ALL JOBS open
 jobRouter.get("/all/open", isAuth, async (req, res) => {
+   try {
+      const jobsOpen = await JobModel.find({ status: "ABERTA" });
+
+      return res.status(200).json(jobsOpen);
+   } catch (error) {
+      console.log(error);
+      return res.status(500).json(error);
+   }
+});
+
+jobRouter.get("/all/open/public", async (req, res) => {
    try {
       const jobsOpen = await JobModel.find({ status: "ABERTA" });
 
