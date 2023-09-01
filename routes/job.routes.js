@@ -94,7 +94,7 @@ jobRouter.get("/all/open/public", async (req, res) => {
    }
 });
 
-//edit job
+//edit job /job/edit/id_job
 jobRouter.put("/edit/:id_job", isAuth, async (req, res) => {
    try {
       const id_job = req.params.id_job;
@@ -113,6 +113,7 @@ jobRouter.put("/edit/:id_job", isAuth, async (req, res) => {
    }
 });
 
+// /job/delete/id_job
 jobRouter.delete("/delete/:id_job", isAuth, async (req, res) => {
    try {
       const id_job = req.params.id_job;
